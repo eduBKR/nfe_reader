@@ -14,12 +14,17 @@ module Nfe
         :header, :provider, :customer, :products, :collection, :transport,
         :purchase, :cane, :export, :delivery, :removal,:enviroment,
         :version_app, :key, :date, :protocol, :digest, :status, :description,
-        :total, :authorizations
+        :total, :authorizations, :valid
 
       def initialize(file)
         xml = Nokogiri::XML(file)
 
         xml = xml.to_hash
+
+        if xml[:nfeProc].nil?
+          @valid = false
+          return
+        end
 
         # Versao da NFe
         @version = xml[:nfeProc][:versao]
@@ -121,8 +126,10 @@ module Nfe
         if xml[:cana]
           @cane = Nfe::Cane.new(xml[:cana])
         end
+
+        @valid = true
       ensure
-        file.close
+        file.close if file.respond_to? :close
       end
     end
   end
