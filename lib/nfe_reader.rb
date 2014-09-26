@@ -17,7 +17,9 @@ module Nfe
         :total, :authorizations, :error, :trace
 
       def initialize(file)
-        xml = Nokogiri::XML(file).to_hash
+
+        xml = file.is_a?(Nokogiri::XML::Document) ? file : Nokogiri::XML(file)
+        xml = xml.to_hash
 
         # Versao da NFe
         @version = xml[:nfeProc][:versao]
