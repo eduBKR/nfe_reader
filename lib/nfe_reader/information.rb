@@ -1,38 +1,29 @@
 # encoding: UTF-8
 module Nfe
-  class Information
-    attr_reader :information, :information_taxpayer, :taxpayer_messages, :messages,
-      :references
+  module Reader
+    class Information
+      include ::AttributeHelper
+      include ::CreatorHelper
 
-    def initialize(attrs = {})
-      @information = attrs[:infAdFisco]
-      @information_taxpayer = attrs[:infCpl]
+      attr_reader :information, :information_taxpayer, :taxpayer_messages, :messages,
+        :references
 
-      if attrs[:procRef]
-        @references = to_array(attrs[:procRef])
-      end
+      def initialize(attrs = {})
+        @information = attrs[:infAdFisco]
+        @information_taxpayer = attrs[:infCpl]
 
-      if attrs[:obsCont]
-        @taxpayer_messages = to_array(attrs[:obsCont])
-      end
-
-      if attrs[:obsFisco]
-        @messages = to_array(attrs[:obsFisco])
-      end
-    end
-
-    def to_array(attrs = {})
-      array = []
-
-      if attrs.is_a? Array
-        attrs.each do |hash|
-          array << hash.map { |key, value| value }
+        if attrs[:procRef]
+          @references = to_array(attrs[:procRef])
         end
-      else
-        array << attrs.map { |key, value| value }
-      end
 
-      array
+        if attrs[:obsCont]
+          @taxpayer_messages = to_array(attrs[:obsCont])
+        end
+
+        if attrs[:obsFisco]
+          @messages = to_array(attrs[:obsFisco])
+        end
+      end
     end
   end
 end

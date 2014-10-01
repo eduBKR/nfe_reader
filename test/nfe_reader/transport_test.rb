@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Transport do
+describe Nfe::Reader::Transport do
   def transport_hash
     {
       transport: {
@@ -68,7 +68,7 @@ describe Nfe::Transport do
     }
   end
 
-  let(:transport) { Nfe::Transport.new(transport_hash[:transport]) }
+  let(:transport) { Nfe::Reader::Transport.new(transport_hash[:transport]) }
 
   it '#kind' do
     transport.kind.must_equal '1'
@@ -163,7 +163,7 @@ describe Nfe::Transport do
   end
 
   describe 'seals' do
-    let(:transport) { Nfe::Transport.new(seals_hash[:transport]) }
+    let(:transport) { Nfe::Reader::Transport.new(seals_hash[:transport]) }
   
     it 'have a string with all seal' do
          transport.seals.must_equal '1234567890, 1239126304, 1231313123'

@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Collection do
+describe Nfe::Reader::Collection do
   def nfe_hash
     {
       collection: {
@@ -44,7 +44,7 @@ describe Nfe::Collection do
     }
   end
 
-  let(:collection) { Nfe::Collection.new(nfe_hash[:collection]) }
+  let(:collection) { Nfe::Reader::Collection.new(nfe_hash[:collection]) }
 
   describe 'One duplicate' do
     it '#number' do
@@ -69,7 +69,7 @@ describe Nfe::Collection do
   end
 
   describe 'Two duplicate' do
-      let(:collection) { Nfe::Collection.new(collection_hash[:collection]) }
+      let(:collection) { Nfe::Reader::Collection.new(collection_hash[:collection]) }
 
     it '#duplicates' do
       collection.duplicates.size.must_equal 2

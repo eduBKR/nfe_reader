@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Customer do
+describe Nfe::Reader::Customer do
   def customer_hash
     {
       dest: {
@@ -27,7 +27,7 @@ describe Nfe::Customer do
   end
 
   describe 'with address' do
-    let(:customer) { Nfe::Customer.new(customer_hash[:dest]) }
+    let(:customer) { Nfe::Reader::Customer.new(customer_hash[:dest]) }
 
     it '#foreign_code' do
       customer.foreign_code.must_equal '10021312198423'
@@ -94,7 +94,7 @@ describe Nfe::Customer do
   end
 
   describe 'without address' do
-    let(:customer) { Nfe::Customer.new }
+    let(:customer) { Nfe::Reader::Customer.new }
     it '#phone' do
       customer.number.must_be_nil
     end

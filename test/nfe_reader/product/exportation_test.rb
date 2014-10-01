@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::Exportation do
+describe Nfe::Reader::Exportation do
   def nfe_hash
     {
       detExport: {
@@ -14,7 +14,7 @@ describe Nfe::Exportation do
     }
   end
 
-  let(:exportation) { Nfe::Exportation.new(nfe_hash[:detExport]) }
+  let(:exportation) { Nfe::Reader::Exportation.new(nfe_hash[:detExport]) }
 
   it '#drawnback' do
     exportation.drawnback.must_equal '1'

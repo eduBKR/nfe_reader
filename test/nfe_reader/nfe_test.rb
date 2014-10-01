@@ -1,10 +1,10 @@
-require File.expand_path("../test_helper", __FILE__)
+require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader do
-  let (:nfe) { Nfe::Reader::Base.new(File.open(file)) }
+describe Nfe::Reader::Nfe do
+  let (:nfe) { Nfe::Reader::Nfe.new(File.open(file)) }
 
   describe 'many products' do 
-    let(:file) { File.open(File.expand_path("../files/sample-nfe.xml", __FILE__))}
+    let(:file) { File.open(File.expand_path("../../files/sample-nfe.xml", __FILE__))}
 
     it '#version' do
       nfe.version.must_equal '2.00'
@@ -19,23 +19,23 @@ describe Nfe::Reader do
     end
 
     it '#customer' do
-      nfe.customer.must_be_instance_of Nfe::Customer
+      nfe.customer.must_be_instance_of Nfe::Reader::Customer
     end
 
     it '#information' do
-      nfe.information.must_be_instance_of Nfe::Information
+      nfe.information.must_be_instance_of Nfe::Reader::Information
     end
 
     it '#header' do
-      nfe.header.must_be_instance_of Nfe::Header
+      nfe.header.must_be_instance_of Nfe::Reader::Header
     end
 
     it '#provider' do
-      nfe.provider.must_be_instance_of Nfe::Provider
+      nfe.provider.must_be_instance_of Nfe::Reader::Provider
     end
 
     it '#customer' do
-      nfe.customer.must_be_instance_of Nfe::Customer
+      nfe.customer.must_be_instance_of Nfe::Reader::Customer
     end
 
     it '#products' do
@@ -43,15 +43,15 @@ describe Nfe::Reader do
     end
 
     it '#products' do
-      nfe.products.first.must_be_instance_of Nfe::Product
+      nfe.products.first.must_be_instance_of Nfe::Reader::Product
     end
 
     it '#collection' do
-      nfe.collection.must_be_instance_of Nfe::Collection
+      nfe.collection.must_be_instance_of Nfe::Reader::Collection
     end
 
     it '#transport' do
-      nfe.transport.must_be_instance_of Nfe::Transport
+      nfe.transport.must_be_instance_of Nfe::Reader::Transport
     end
 
     it '#purchase' do
@@ -107,19 +107,19 @@ describe Nfe::Reader do
     end
 
     it '#total' do
-      nfe.total.must_be_instance_of Nfe::Total
+      nfe.total.must_be_instance_of Nfe::Reader::Total
     end
   end
 
   describe 'single product' do 
-    let(:file) { File.open(File.expand_path("../files/sample2-nfe.xml", __FILE__))}
+    let(:file) { File.open(File.expand_path("../../files/sample2-nfe.xml", __FILE__))}
 
     it '#products' do
       nfe.products.must_be_instance_of Array
     end
 
     it '#products' do
-      nfe.products.first.must_be_instance_of Nfe::Product
+      nfe.products.first.must_be_instance_of Nfe::Reader::Product
     end
   end
 end

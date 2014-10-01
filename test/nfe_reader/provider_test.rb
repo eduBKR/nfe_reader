@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Provider do
+describe Nfe::Reader::Provider do
   def provider_hash
     {
       emit: {
@@ -31,7 +31,7 @@ describe Nfe::Provider do
   end
 
   describe 'with address' do
-    let(:provider) { Nfe::Provider.new(provider_hash[:emit]) }
+    let(:provider) { Nfe::Reader::Provider.new(provider_hash[:emit]) }
 
     it '#cnpj' do
       provider.cnpj.must_equal '99819146000120'
@@ -115,7 +115,7 @@ describe Nfe::Provider do
   end
 
   describe 'without address' do
-    let(:provider) { Nfe::Provider.new }
+    let(:provider) { Nfe::Reader::Provider.new }
 
     it '#phone' do
       provider.number.must_be_nil

@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::PisSt do
+describe Nfe::Reader::PisSt do
   def nfe_hash
     {
       pisst: {
@@ -13,7 +13,7 @@ describe Nfe::PisSt do
     }
   end
 
-  let(:pis) { Nfe::PisSt.new(nfe_hash[:pisst]) }
+  let(:pis) { Nfe::Reader::PisSt.new(nfe_hash[:pisst]) }
 
   it '#base' do
     pis.base.must_equal '100.00'

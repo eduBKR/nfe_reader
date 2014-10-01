@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::Duplicate do
+describe Nfe::Reader::Duplicate do
   def nfe_hash
     {
       duplicate: {
@@ -11,7 +11,7 @@ describe Nfe::Duplicate do
     }
   end
 
-  let(:duplicate) { Nfe::Duplicate.new(nfe_hash[:duplicate]) }
+  let(:duplicate) { Nfe::Reader::Duplicate.new(nfe_hash[:duplicate]) }
 
   it '#number' do
     duplicate.number.must_equal '1'

@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Delivery do
+describe Nfe::Reader::Delivery do
   def nfe_hash
     {
       entrega: {
@@ -17,7 +17,7 @@ describe Nfe::Delivery do
     }
   end
 
-  let(:delivery) { Nfe::Delivery.new(nfe_hash[:entrega]) }
+  let(:delivery) { Nfe::Reader::Delivery.new(nfe_hash[:entrega]) }
 
   it '#cnpj' do
     delivery.cnpj.must_equal '99819146000120'

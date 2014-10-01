@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::ImportationTax do
+describe Nfe::Reader::ImportationTax do
   def nfe_hash
     {
       II: {
@@ -12,7 +12,7 @@ describe Nfe::ImportationTax do
     }
   end
 
-  let(:cofins) { Nfe::ImportationTax.new(nfe_hash[:II]) }
+  let(:cofins) { Nfe::Reader::ImportationTax.new(nfe_hash[:II]) }
 
   it '#base' do
     cofins.base.must_equal '100.00'

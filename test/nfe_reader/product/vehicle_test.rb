@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::Vehicle do
+describe Nfe::Reader::Vehicle do
   def nfe_hash
     {
       vehicle: {
@@ -33,7 +33,7 @@ describe Nfe::Vehicle do
     }
   end
 
-  let(:vehicle) { Nfe::Vehicle.new(nfe_hash[:vehicle]) }
+  let(:vehicle) { Nfe::Reader::Vehicle.new(nfe_hash[:vehicle]) }
 
   it '#operation' do
     vehicle.operation.must_equal '1'

@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Product do
+describe Nfe::Reader::Product do
   def product_hash
     {
       product: {
@@ -33,7 +33,7 @@ describe Nfe::Product do
     }
   end
 
-  let(:product) { Nfe::Product.new(product_hash[:product]) }
+  let(:product) { Nfe::Reader::Product.new(product_hash[:product]) }
 
   it '#demand_item' do
     product.demand_item.must_equal '23'
@@ -47,12 +47,12 @@ describe Nfe::Product do
     product.number.must_equal '1'
   end
 
-  it '#product_code' do
-    product.product_code.must_equal '0001'
+  it '#code' do
+    product.code.must_equal '0001'
   end
 
-  it '#product' do
-    product.product.must_equal 'Product'
+  it '#name' do
+    product.name.must_equal 'Product'
   end
 
   it '#ean' do

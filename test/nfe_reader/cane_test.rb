@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Cane do
+describe Nfe::Reader::Cane do
   def nfe_hash
     {
       cana: {
@@ -27,7 +27,7 @@ describe Nfe::Cane do
     }
   end
 
-  let(:cane) { Nfe::Cane.new(nfe_hash[:cana]) }
+  let(:cane) { Nfe::Reader::Cane.new(nfe_hash[:cana]) }
 
   it '#harvest' do
     cane.harvest.must_equal '2000'

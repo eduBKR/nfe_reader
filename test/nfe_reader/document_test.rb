@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Document do
+describe Nfe::Reader::Document do
   def nfe_hash
     {
       NFref: {
@@ -33,7 +33,7 @@ describe Nfe::Document do
     }
   end
 
-  let(:document) { Nfe::Document.new(nfe_hash[:NFref]) }
+  let(:document) { Nfe::Reader::Document.new(nfe_hash[:NFref]) }
 
   it '#key' do
     document.key.must_equal '1000000000000'

@@ -26,8 +26,17 @@ Open the xml file and import to Nfe::Reader:
 
 ```ruby
 file = File.open('sample-nfe.xml')
-nfe = Nfe::Reader::Base.new(file)
+nfe = Nfe::Reader::Nfe.new(file)
 ```
+
+You can access class attributes:
+
+```ruby
+nfe.attributes
+
+# {"version"=>"2.00", "signature"=> Hash, "enviroment"=>"1", "version_app"=>"SVRS20140825154650", "key"=>"42140979858221000155550010000483141000490912", "date"=>"2014-09-26T15:13:17", "protocol"=>"342140109891239", "digest"=>"v6ZkLNwbVB4lmk/PbND1kmr5tIY=", "status"=>"100", "description"=>"Autorizado o uso da NF-e.", "number"=>"NFe42140979858221000155550010000483141000490912"}
+```
+
 
 ### Contributing
 

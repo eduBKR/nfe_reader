@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Carrier do
+describe Nfe::Reader::Carrier do
   def nfe_hash
     {
       transp: {
@@ -14,7 +14,7 @@ describe Nfe::Carrier do
     }
   end
 
-  let(:carrier) { Nfe::Carrier.new(nfe_hash[:transp]) }
+  let(:carrier) { Nfe::Reader::Carrier.new(nfe_hash[:transp]) }
 
   it '#cnpj' do
     carrier.cnpj.must_equal '99819146000120'

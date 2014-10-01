@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Export do
+describe Nfe::Reader::Export do
   def nfe_hash
     {
       exporta: {
@@ -10,7 +10,7 @@ describe Nfe::Export do
     }
   end
 
-  let(:export) { Nfe::Export.new(nfe_hash[:exporta]) }
+  let(:export) { Nfe::Reader::Export.new(nfe_hash[:exporta]) }
 
   it '#state' do
     export.state.must_equal 'ST'

@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::Icms do
+describe Nfe::Reader::Icms do
   def nfe_hash
     {
       ICMS: {
@@ -30,7 +30,7 @@ describe Nfe::Icms do
     }
   end
 
-  let(:icms) { Nfe::Icms.new(nfe_hash[:ICMS]) }
+  let(:icms) { Nfe::Reader::Icms.new(nfe_hash[:ICMS]) }
 
   it '#origin' do
     icms.origin.must_equal '1'
