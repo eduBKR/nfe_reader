@@ -4,13 +4,13 @@ module Nfe
     class Carrier
       include ::AttributeHelper
 
-      attr_reader :cnpj, :cpf, :name, :ie, :address, :city, :state
+      attr_reader :cnpj, :cpf, :name, :state_registration, :address, :city, :state
 
       def initialize(attrs = {})
         @cnpj = attrs[:CNPJ]
         @cpf = attrs[:CPF]
         @name = attrs[:xNome]
-        @ie = attrs[:IE]
+        @state_registration = attrs[:IE]
         @address = attrs[:xEnder]
         @city = attrs[:xMun]
         @state = attrs[:UF]
