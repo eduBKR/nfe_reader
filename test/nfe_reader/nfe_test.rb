@@ -46,8 +46,8 @@ describe Nfe::Reader::Nfe do
       nfe.products.first.must_be_instance_of Nfe::Reader::Product
     end
 
-    it '#collection' do
-      nfe.collection.must_be_instance_of Nfe::Reader::Collection
+    it '#billing' do
+      nfe.billing.must_be_instance_of Nfe::Reader::Billing
     end
 
     it '#transport' do

@@ -2,9 +2,10 @@ module Nfe
   module Reader
     class Nfe
       include ::AttributeHelper
+      include ::CreatorHelper
 
       attr_reader :version, :number, :signature, :client, :information,
-        :header, :provider, :customer, :products, :collection, :transport,
+        :header, :provider, :customer, :products, :billing, :transport,
         :purchase, :cane, :export, :delivery, :removal,:enviroment,
         :version_app, :key, :date, :protocol, :digest, :status, :description,
         :total, :authorizations, :error, :trace, :fiscal
@@ -22,7 +23,7 @@ module Nfe
         # Protocolo
         if xml[:nfeProc][:protNFe]
           protocol = xml[:nfeProc][:protNFe][:infProt]
-          
+
           @enviroment = protocol[:tpAmb]
           @version_app = protocol[:verAplic]
           @key = protocol[:chNFe]
@@ -58,21 +59,14 @@ module Nfe
         end
 
         # Detalhamento de Produtos e Serviços da NF-e
-        @products = []
-        if xml[:det].is_a? Array
-          xml[:det].each do |product|
-            @products << Product.new(product)
-          end
-        else
-          @products << Product.new(xml[:det])
-        end
+        @products = create_resources(Product, xml[:det])
 
         # Totalizadores
         @total = Total.new(xml[:total])
 
         # Informacao de Pagamento
         if xml[:cobr]
-          @collection = Collection.new(xml[:cobr])
+          @billing = Billing.new(xml[:cobr])
         end
 
         # Transporte
@@ -91,14 +85,7 @@ module Nfe
         end
 
         # Autorização para obter XML
-        @authorizations = []
-        if xml[:autXML].is_a? Array
-          xml[:autXML].each do |product|
-            @authorizations << Authorization.new(product)
-          end
-        elsif xml[:autXML].is_a? Hash
-          @authorizations << Authorization.new(xml[:autXML])
-        end
+        @authorizations = create_resources(Authorization, xml[:autXML])
 
         # Informacoes de Comercio Exterior
         if xml[:exporta]

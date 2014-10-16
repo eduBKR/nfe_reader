@@ -9,8 +9,12 @@ module CreatorHelper
 
     return resources unless attrs
 
-    attrs.each do |a|
-      resources << klass.new(a.last)
+    if attrs.is_a? Hash
+      resources << klass.new(attrs)
+    else
+      attrs.each do |a|
+        resources << klass.new(a)
+      end
     end
 
     resources

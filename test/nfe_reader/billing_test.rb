@@ -1,9 +1,9 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader::Collection do
+describe Nfe::Reader::Billing do
   def nfe_hash
     {
-      collection: {
+      billing: {
         fat:{
           nFat: '1000',
           vOrig: '1500.00',
@@ -19,9 +19,9 @@ describe Nfe::Reader::Collection do
     }
   end
 
-  def collection_hash
+  def billing_hash
     {
-      collection: {
+      billing: {
         fat:{
           nFat: '1000',
           vOrig: '1500.00',
@@ -44,35 +44,35 @@ describe Nfe::Reader::Collection do
     }
   end
 
-  let(:collection) { Nfe::Reader::Collection.new(nfe_hash[:collection]) }
+  let(:billing) { Nfe::Reader::Billing.new(nfe_hash[:billing]) }
 
   describe 'One duplicate' do
     it '#number' do
-      collection.number.must_equal '1000'
+      billing.number.must_equal '1000'
     end
 
     it '#value' do
-      collection.value.must_equal '1500.00'
+      billing.value.must_equal '1500.00'
     end
 
     it '#descont' do
-      collection.descont.must_equal '0.00'
+      billing.descont.must_equal '0.00'
     end
 
     it '#value_net' do
-      collection.value_net.must_equal '1500.00'
+      billing.value_net.must_equal '1500.00'
     end
 
     it '#duplicates' do
-      collection.duplicates.size.must_equal 1
+      billing.duplicates.size.must_equal 1
     end
   end
 
   describe 'Two duplicate' do
-      let(:collection) { Nfe::Reader::Collection.new(collection_hash[:collection]) }
+      let(:billing) { Nfe::Reader::Billing.new(billing_hash[:billing]) }
 
     it '#duplicates' do
-      collection.duplicates.size.must_equal 2
+      billing.duplicates.size.must_equal 2
     end
   end
 end

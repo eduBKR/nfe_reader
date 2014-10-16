@@ -28,8 +28,8 @@ describe Nfe::Reader::Carrier do
     carrier.name.must_equal 'Carrier'
   end
 
-  it '#ie' do
-    carrier.ie.must_equal '15786913'
+  it '#state_registration' do
+    carrier.state_registration.must_equal '15786913'
   end
 
   it '#address' do

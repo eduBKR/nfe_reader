@@ -4,6 +4,7 @@ module Nfe
     # Identificação da Nota Fiscal eletrônica
     class Header
       include ::AttributeHelper
+      include ::CreatorHelper
 
       attr_reader :state, :city, :sample_number, :operation, :number,
         :model, :emission, :emission_kind, :out, :out_time, :serie, :kind,
@@ -117,15 +118,7 @@ module Nfe
         @contingency_justification = attrs[:xJust]
 
         # Documento Fiscal Referenciado
-        @documents = []
-
-        if attrs[:NFref].is_a? Array
-          attrs[:NFref].each do |document|
-            @documents << Document.new(document)
-          end
-        elsif attrs[:NFref].is_a? Hash
-          @documents << Document.new(attrs[:NFref])
-        end
+        @documents = create_resources(Document, attrs[:NFref])
       end
     end
   end
