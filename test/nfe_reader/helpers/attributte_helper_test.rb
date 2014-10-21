@@ -1,8 +1,8 @@
-require File.expand_path("../../test_helper", __FILE__)
+require File.expand_path("../../../test_helper", __FILE__)
 
-describe AttributeHelper do
+describe Nfe::Reader::AttributeHelper do
   class AttributeTest
-    include AttributeHelper
+    include Nfe::Reader::AttributeHelper
     attr_accessor :first_name, :last_name
 
     def initialize( attrs= {})

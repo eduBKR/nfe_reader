@@ -1,8 +1,8 @@
 module Nfe
   module Reader
     class Cane
-      include ::AttributeHelper
-      include ::CreatorHelper
+      include AttributeHelper
+      include CreatorHelper
 
       attr_reader :harvest, :month, :month_amount, :previous_amount, :amount,
         :value, :deduction_value, :net_value, :days, :deductions

@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Total
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :icms_base, :icms, :st_base, :st, :product, :freight,
         :insurance, :descount, :ii, :ipi, :pis, :cofins, :another, :total,

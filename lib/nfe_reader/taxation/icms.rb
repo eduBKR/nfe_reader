@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Icms
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :origin, :cst, :icms_percentage, :icms, :icms_base_kind,
         :icms_base, :icms_base_reduction, :icms_st_base_kind, :icms_st_base_reduction,

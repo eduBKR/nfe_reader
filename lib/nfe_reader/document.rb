@@ -3,7 +3,7 @@ module Nfe
   module Reader
     # Documento Fiscal Referenciado
     class Document
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :key, :nfe_state, :nfe_year, :nfe_cnpj, :nfe_model,
         :nfe_serie, :nfe_number, :farmer_state, :farmer_year, :farmer_cnpj,

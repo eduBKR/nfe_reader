@@ -3,7 +3,7 @@ module Nfe
   module Reader
     # Identificação do Local de Retirada
     class Removal
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :cnpj, :cpf, :address, :number, :complement,
         :neighborhood, :city_code, :city, :state

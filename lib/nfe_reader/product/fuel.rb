@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Fuel
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :anp, :codif, :amount, :cide_base, :cide_aliquot, :cide_value
 

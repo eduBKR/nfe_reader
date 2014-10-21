@@ -3,7 +3,7 @@ module Nfe
   module Reader
     # Declaração de Importação
     class Importation
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :number, :date, :local, :state, :customs_clearance, :exporter,
         :addition_number, :addition_sequence, :manufacturer, :addition_descount,

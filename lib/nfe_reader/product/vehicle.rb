@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Vehicle
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :operation, :chassi, :color, :color_name, :engine_power,
         :engine_capacities, :weight_net, :weight_gross, :serie, :fuel_kind,

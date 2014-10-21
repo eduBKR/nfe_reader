@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Exportation
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :drawnback, :number, :key, :amount
 

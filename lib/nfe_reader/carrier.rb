@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Carrier
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :cnpj, :cpf, :name, :state_registration, :address, :city, :state
 

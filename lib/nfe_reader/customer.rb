@@ -3,7 +3,7 @@ module Nfe
   module Reader
     # Identificação do Destinatário da Nota Fiscal eletrônica
     class Customer
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :person, :address
 

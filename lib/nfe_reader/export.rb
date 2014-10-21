@@ -3,7 +3,7 @@
 module Nfe
   module Reader
     class Export
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :state, :address
 

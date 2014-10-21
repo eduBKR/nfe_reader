@@ -3,7 +3,7 @@ module Nfe
   module Reader
     # Identificação do Fisco Emitente da NF-e
     class Fiscal
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :cnpj, :agency, :code, :name, :paid_date,
          :phone, :state, :number, :date, :value, :repartition

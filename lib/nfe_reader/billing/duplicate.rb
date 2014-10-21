@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Duplicate
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :number, :expiration, :value
 

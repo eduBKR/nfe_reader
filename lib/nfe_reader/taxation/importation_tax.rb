@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class ImportationTax
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :base, :expenditure, :taxes, :iof
       

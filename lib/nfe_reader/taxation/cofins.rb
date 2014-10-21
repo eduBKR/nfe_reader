@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Cofins
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :cst, :base, :percentage, :value, :amount,
         :aliquot

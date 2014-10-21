@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Ipi
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :frame_class, :frame_code, :cnpj, :seal, :seal_amount,
         :cst, :ipi_base, :amount, :value_unit, :percentage, :value, :cst_group

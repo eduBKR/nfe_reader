@@ -3,8 +3,8 @@ module Nfe
   module Reader
     # Detalhamento de Produtos e Serviços da NF-e
     class Product
-      include ::AttributeHelper
-      include ::CreatorHelper
+      include AttributeHelper
+      include CreatorHelper
 
       attr_reader :number, :code, :name, :ean, :ncm, :cfop,
         :unit_sale, :value_sale, :amount_sale, :total, :gtin, :unit,

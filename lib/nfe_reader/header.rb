@@ -3,8 +3,8 @@ module Nfe
   module Reader
     # Identificação da Nota Fiscal eletrônica
     class Header
-      include ::AttributeHelper
-      include ::CreatorHelper
+      include AttributeHelper
+      include CreatorHelper
 
       attr_reader :state, :city, :sample_number, :operation, :number,
         :model, :emission, :emission_kind, :out, :out_time, :serie, :kind,

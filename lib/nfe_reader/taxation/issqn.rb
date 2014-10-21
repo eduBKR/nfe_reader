@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Issqn
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_accessor :base, :aliquot, :value, :city, :services, :cst
 

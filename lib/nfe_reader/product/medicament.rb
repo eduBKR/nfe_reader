@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Medicament
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :lot_number, :lot_amount, :fabrication, :validity, :ceiling_price
 

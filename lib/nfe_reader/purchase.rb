@@ -4,7 +4,7 @@
 module Nfe
   module Reader
     class Purchase
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :number, :demand, :contract
 

@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Armament
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :kind, :serie, :barrel, :description
 

@@ -1,8 +1,8 @@
 module Nfe
   module Reader
     class Nfe
-      include ::AttributeHelper
-      include ::CreatorHelper
+      include AttributeHelper
+      include CreatorHelper
 
       attr_reader :version, :number, :signature, :client, :information,
         :header, :provider, :customer, :products, :billing, :transport,

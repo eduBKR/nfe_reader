@@ -3,7 +3,7 @@ module Nfe
   module Reader
     # Mapeia as Cobrancas
     class Billing
-      include ::AttributeHelper
+      include AttributeHelper
       include CreatorHelper
 
       attr_reader :number, :value, :descont, :value_net, :duplicates

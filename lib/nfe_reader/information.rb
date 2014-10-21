@@ -2,8 +2,8 @@
 module Nfe
   module Reader
     class Information
-      include ::AttributeHelper
-      include ::CreatorHelper
+      include AttributeHelper
+      include CreatorHelper
 
       attr_reader :information, :information_taxpayer, :taxpayer_messages, :messages,
         :references

@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class Transport
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :kind, :service_value, :base, :icms_aliquot, :icms_value,
         :cfop, :city, :vehicle_plaque, :vehicle_state, :vehicle_rntc, :hauling_palque,

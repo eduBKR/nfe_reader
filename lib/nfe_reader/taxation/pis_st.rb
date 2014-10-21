@@ -2,7 +2,7 @@
 module Nfe
   module Reader
     class PisSt
-      include ::AttributeHelper
+      include AttributeHelper
 
       attr_reader :base, :percentage, :amount, :aliquot, :value
       
