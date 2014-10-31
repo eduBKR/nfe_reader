@@ -1,22 +1,24 @@
-module Nfe
-  module Reader
-    module AttributeHelper
-      def attributes
-        @attributes ||= attributes_to_hash
-      end
+module NfeReader
+  module AttributeHelper
+    def attributes
+      @attributes ||= attributes_to_hash
+    end
 
-      def attributes_to_hash
-        attrs = Hash.new
+    WITHELIST = %w(taxpayer_messages messages seals)
 
-        instance_variables.each do |var|
-          key   = var.to_s.gsub /^@/, ''
-          value = instance_variable_get(var)
+    def attributes_to_hash
+      attrs = Hash.new
 
-          attrs[key] = value if [String, Hash].include? value.class
+      instance_variables.each do |var|
+        key   = var.to_s.gsub /^@/, ''
+        value = instance_variable_get(var)
+
+        if [String, Hash].include?(value.class) || WITHELIST.include?(key)
+          attrs[key] = value
         end
-
-        attrs
       end
+
+      attrs
     end
   end
 end

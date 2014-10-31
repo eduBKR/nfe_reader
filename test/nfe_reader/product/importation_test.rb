@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::Reader::Importation do
+describe NfeReader::Importation do
   def nfe_hash
     {
       importation: {
@@ -25,7 +25,7 @@ describe Nfe::Reader::Importation do
     }
   end
 
-  let(:importation) { Nfe::Reader::Importation.new(nfe_hash[:importation]) }
+  let(:importation) { NfeReader::Importation.new(nfe_hash[:importation]) }
 
   it '#afrmm' do
     importation.afrmm.must_equal '100.00'

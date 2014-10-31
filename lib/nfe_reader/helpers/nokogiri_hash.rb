@@ -40,6 +40,8 @@ class Nokogiri::XML::Node
         unless child.next_sibling || child.previous_sibling
           return result
         end
+      elsif child.cdata?
+        return child.text
       elsif result_hash[name]
         if result_hash[name].is_a?(Object::Array)
           result_hash[name] << result

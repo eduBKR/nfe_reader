@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::Reader::Fuel do
+describe NfeReader::Fuel do
   def nfe_hash
     {
       fuel: {
@@ -16,7 +16,7 @@ describe Nfe::Reader::Fuel do
     }
   end
 
-  let(:fuel) { Nfe::Reader::Fuel.new(nfe_hash[:fuel]) }
+  let(:fuel) { NfeReader::Fuel.new(nfe_hash[:fuel]) }
 
   it '#anp' do
     fuel.anp.must_equal '10613541'

@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader::Information do
+describe NfeReader::Information do
   def nfe_hash
     {
       infAdic: {
@@ -25,7 +25,7 @@ describe Nfe::Reader::Information do
     }
   end
 
-  let(:information) { Nfe::Reader::Information.new(nfe_hash[:infAdic]) }
+  let(:information) { NfeReader::Information.new(nfe_hash[:infAdic]) }
 
   it '#information' do
     information.information.must_equal 'Information'

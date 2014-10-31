@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader::Total do
+describe NfeReader::Total do
   def nfe_hash
     {
       total: {
@@ -40,7 +40,7 @@ describe Nfe::Reader::Total do
     }
   end
 
-  let(:total) { Nfe::Reader::Total.new(nfe_hash[:total]) }
+  let(:total) { NfeReader::Total.new(nfe_hash[:total]) }
 
   it '#icms_base' do
     total.icms_base.must_equal '1000.00'

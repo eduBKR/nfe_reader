@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader::Person do
+describe NfeReader::Person do
   def cte_hash
     {
       CNPJ: '58571647000153',
@@ -16,7 +16,7 @@ describe Nfe::Reader::Person do
     }
   end
 
-  let(:person) { Nfe::Reader::Person.new(cte_hash) }
+  let(:person) { NfeReader::Person.new(cte_hash) }
 
   it '#cnpj' do
     person.cnpj.must_equal cte_hash[:CNPJ]

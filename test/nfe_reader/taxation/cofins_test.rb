@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::Reader::Cofins do
+describe NfeReader::Cofins do
   def nfe_hash
     {
       COFINSNT: {
@@ -14,7 +14,7 @@ describe Nfe::Reader::Cofins do
     }
   end
 
-  let(:cofins) { Nfe::Reader::Cofins.new(nfe_hash[:COFINSNT]) }
+  let(:cofins) { NfeReader::Cofins.new(nfe_hash) }
 
   it '#cst' do
     cofins.cst.must_equal '06'

@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::Reader::Armament do
+describe NfeReader::Armament do
   def nfe_hash
     {
       armament: {
@@ -12,7 +12,7 @@ describe Nfe::Reader::Armament do
     }
   end
 
-  let(:armament) { Nfe::Reader::Armament.new(nfe_hash[:armament]) }
+  let(:armament) { NfeReader::Armament.new(nfe_hash[:armament]) }
 
   it '#kind' do
     armament.kind.must_equal '1'

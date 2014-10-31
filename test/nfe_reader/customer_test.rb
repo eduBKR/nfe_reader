@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader::Customer do
+describe NfeReader::Customer do
   def customer_hash
     {
       dest: {
@@ -26,13 +26,13 @@ describe Nfe::Reader::Customer do
     }
   end
 
-  let(:customer) { Nfe::Reader::Customer.new(customer_hash[:dest]) }
+  let(:customer) { NfeReader::Customer.new(customer_hash[:dest]) }
 
   it '#person' do
-    customer.person.must_be_instance_of Nfe::Reader::Person
+    customer.person.must_be_instance_of NfeReader::Person
   end
 
   it '#address' do
-    customer.address.must_be_instance_of Nfe::Reader::Address
+    customer.address.must_be_instance_of NfeReader::Address
   end
 end

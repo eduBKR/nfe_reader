@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::Reader::Ipi do
+describe NfeReader::Ipi do
   def nfe_hash
     {
       ipi: {
@@ -26,7 +26,7 @@ describe Nfe::Reader::Ipi do
     }
   end
 
-  let(:ipi) { Nfe::Reader::Ipi.new(nfe_hash[:ipi]) }
+  let(:ipi) { NfeReader::Ipi.new(nfe_hash[:ipi]) }
 
   it '#frame_class' do
     ipi.frame_class.must_equal '0'

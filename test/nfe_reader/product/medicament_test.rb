@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::Reader::Medicament do
+describe NfeReader::Medicament do
   def nfe_hash
     {
       medicament: {
@@ -13,7 +13,7 @@ describe Nfe::Reader::Medicament do
     }
   end
 
-  let(:medicament) { Nfe::Reader::Medicament.new(nfe_hash[:medicament]) }
+  let(:medicament) { NfeReader::Medicament.new(nfe_hash[:medicament]) }
 
   it '#lot_number' do
     medicament.lot_number.must_equal '123980'

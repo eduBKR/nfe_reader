@@ -1,8 +1,8 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::Reader::CreatorHelper do
+describe NfeReader::CreatorHelper do
   class CreatorTest < Struct.new(:name)
-    include Nfe::Reader::CreatorHelper
+    include NfeReader::CreatorHelper
   end
 
   class ResourceTest < Struct.new(:name)

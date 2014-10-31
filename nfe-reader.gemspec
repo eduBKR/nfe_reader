@@ -5,7 +5,7 @@ require 'nfe_reader/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "nfe_reader"
-  spec.version       = Nfe::Reader::VERSION
+  spec.version       = NfeReader::VERSION
   spec.authors       = ["Eduardo Becker"]
   spec.email         = ["edu.bkr@gmail.com"]
   spec.summary       = %q{NFe XML Extractor}

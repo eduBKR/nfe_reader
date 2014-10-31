@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader::Purchase do
+describe NfeReader::Purchase do
   def nfe_hash
     {
       compra: {
@@ -11,7 +11,7 @@ describe Nfe::Reader::Purchase do
     }
   end
 
-  let(:purchase) { Nfe::Reader::Purchase.new(nfe_hash[:compra]) }
+  let(:purchase) { NfeReader::Purchase.new(nfe_hash[:compra]) }
 
   it '#number' do
     purchase.number.must_equal '10001'

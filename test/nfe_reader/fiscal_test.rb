@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader::Fiscal do
+describe NfeReader::Fiscal do
   def nfe_hash
     {
       avulsa: {
@@ -19,7 +19,7 @@ describe Nfe::Reader::Fiscal do
     }
   end
 
-  let(:fiscal) { Nfe::Reader::Fiscal.new(nfe_hash[:avulsa]) }
+  let(:fiscal) { NfeReader::Fiscal.new(nfe_hash[:avulsa]) }
 
   it '#cnpj' do
     fiscal.cnpj.must_equal '99819146000120'

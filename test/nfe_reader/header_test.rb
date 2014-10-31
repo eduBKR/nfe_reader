@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader::Header do
+describe NfeReader::Header do
   def nfe_hash
     {
       ide: {
@@ -31,7 +31,7 @@ describe Nfe::Reader::Header do
     }
   end
 
-  let(:header) { Nfe::Reader::Header.new(nfe_hash[:ide]) }
+  let(:header) { NfeReader::Header.new(nfe_hash[:ide]) }
 
   it '#final_consumer' do
     header.final_consumer.must_equal '0'

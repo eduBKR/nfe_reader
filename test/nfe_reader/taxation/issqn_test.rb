@@ -1,6 +1,6 @@
 require File.expand_path("../../../test_helper", __FILE__)
 
-describe Nfe::Reader::Issqn do
+describe NfeReader::Issqn do
   def nfe_hash
     {
       issqn: {
@@ -14,7 +14,7 @@ describe Nfe::Reader::Issqn do
     }
   end
 
-  let(:issqn) { Nfe::Reader::Issqn.new(nfe_hash[:issqn]) }
+  let(:issqn) { NfeReader::Issqn.new(nfe_hash[:issqn]) }
 
   it '#cst' do
     issqn.cst.must_equal '10'

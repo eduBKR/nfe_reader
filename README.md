@@ -1,4 +1,4 @@
-## Nfe::Reader ##
+## NfeReader ##
 
 Gem to open Brazilian NF-e XML and convert to Ruby classes.
 
@@ -22,11 +22,11 @@ Or install it yourself as:
 
 ### Usage
 
-Open the xml file and import to Nfe::Reader:
+Open the xml file and import to NfeReader:
 
 ```ruby
 file = File.open('sample-nfe.xml')
-nfe = Nfe::Reader::Nfe.new(file)
+nfe = NfeReader::Nfe.new(file)
 ```
 
 You can access class attributes:

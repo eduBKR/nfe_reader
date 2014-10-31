@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader::Billing do
+describe NfeReader::Billing do
   def nfe_hash
     {
       billing: {
@@ -44,7 +44,7 @@ describe Nfe::Reader::Billing do
     }
   end
 
-  let(:billing) { Nfe::Reader::Billing.new(nfe_hash[:billing]) }
+  let(:billing) { NfeReader::Billing.new(nfe_hash[:billing]) }
 
   describe 'One duplicate' do
     it '#number' do
@@ -55,8 +55,8 @@ describe Nfe::Reader::Billing do
       billing.value.must_equal '1500.00'
     end
 
-    it '#descont' do
-      billing.descont.must_equal '0.00'
+    it '#descount' do
+      billing.descount.must_equal '0.00'
     end
 
     it '#value_net' do
@@ -69,7 +69,7 @@ describe Nfe::Reader::Billing do
   end
 
   describe 'Two duplicate' do
-      let(:billing) { Nfe::Reader::Billing.new(billing_hash[:billing]) }
+      let(:billing) { NfeReader::Billing.new(billing_hash[:billing]) }
 
     it '#duplicates' do
       billing.duplicates.size.must_equal 2

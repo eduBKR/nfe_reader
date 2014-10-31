@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader::Authorization do
+describe NfeReader::Authorization do
   def nfe_hash
     {
       autXML: {
@@ -10,7 +10,7 @@ describe Nfe::Reader::Authorization do
     }
   end
 
-  let(:authorization) { Nfe::Reader::Authorization.new(nfe_hash[:autXML]) }
+  let(:authorization) { NfeReader::Authorization.new(nfe_hash[:autXML]) }
 
   it '#cnpj' do
     authorization.cnpj.must_equal '99819146000120'

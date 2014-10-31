@@ -1,6 +1,6 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader::Removal do
+describe NfeReader::Removal do
   def nfe_hash
     {
       retirada: {
@@ -17,7 +17,7 @@ describe Nfe::Reader::Removal do
     }
   end
 
-  let(:removal) { Nfe::Reader::Removal.new(nfe_hash[:retirada]) }
+  let(:removal) { NfeReader::Removal.new(nfe_hash[:retirada]) }
 
   it '#cnpj' do
     removal.cnpj.must_equal '99819146000120'

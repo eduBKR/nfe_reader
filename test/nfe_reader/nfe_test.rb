@@ -1,7 +1,7 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe Nfe::Reader::Nfe do
-  let (:nfe) { Nfe::Reader::Nfe.new(File.open(file)) }
+describe NfeReader::Nfe do
+  let (:nfe) { NfeReader::Nfe.new(File.open(file)) }
 
   describe 'many products' do 
     let(:file) { File.open(File.expand_path("../../files/sample-nfe.xml", __FILE__))}
@@ -19,23 +19,23 @@ describe Nfe::Reader::Nfe do
     end
 
     it '#customer' do
-      nfe.customer.must_be_instance_of Nfe::Reader::Customer
+      nfe.customer.must_be_instance_of NfeReader::Customer
     end
 
     it '#information' do
-      nfe.information.must_be_instance_of Nfe::Reader::Information
+      nfe.information.must_be_instance_of NfeReader::Information
     end
 
     it '#header' do
-      nfe.header.must_be_instance_of Nfe::Reader::Header
+      nfe.header.must_be_instance_of NfeReader::Header
     end
 
     it '#provider' do
-      nfe.provider.must_be_instance_of Nfe::Reader::Provider
+      nfe.provider.must_be_instance_of NfeReader::Provider
     end
 
     it '#customer' do
-      nfe.customer.must_be_instance_of Nfe::Reader::Customer
+      nfe.customer.must_be_instance_of NfeReader::Customer
     end
 
     it '#products' do
@@ -43,15 +43,15 @@ describe Nfe::Reader::Nfe do
     end
 
     it '#products' do
-      nfe.products.first.must_be_instance_of Nfe::Reader::Product
+      nfe.products.first.must_be_instance_of NfeReader::Product
     end
 
     it '#billing' do
-      nfe.billing.must_be_instance_of Nfe::Reader::Billing
+      nfe.billing.must_be_instance_of NfeReader::Billing
     end
 
     it '#transport' do
-      nfe.transport.must_be_instance_of Nfe::Reader::Transport
+      nfe.transport.must_be_instance_of NfeReader::Transport
     end
 
     it '#purchase' do
@@ -107,7 +107,7 @@ describe Nfe::Reader::Nfe do
     end
 
     it '#total' do
-      nfe.total.must_be_instance_of Nfe::Reader::Total
+      nfe.total.must_be_instance_of NfeReader::Total
     end
   end
 
@@ -119,7 +119,7 @@ describe Nfe::Reader::Nfe do
     end
 
     it '#products' do
-      nfe.products.first.must_be_instance_of Nfe::Reader::Product
+      nfe.products.first.must_be_instance_of NfeReader::Product
     end
   end
 end

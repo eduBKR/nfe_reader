@@ -1,5 +1,3 @@
-module Nfe
-  module Reader
-    VERSION = "1.0.6"
-  end
+module NfeReader
+  VERSION = "1.0.6"
 end
