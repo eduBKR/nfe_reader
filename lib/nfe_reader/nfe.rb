@@ -5,113 +5,103 @@ module NfeReader
 
     attr_reader :version, :number, :signature, :client, :information,
       :header, :provider, :customer, :products, :billing, :transport,
-      :purchase, :cane, :export, :delivery, :removal,:enviroment,
-      :version_app, :key, :date, :protocol, :digest, :status, :description,
-      :total, :authorizations, :error, :trace, :fiscal, :version_schema
+      :purchase, :cane, :export, :delivery, :removal, :total, 
+      :authorizations, :error, :trace, :fiscal, :version_schema,
+      :protocol
 
-    def initialize(file)
-
-      xml = file.is_a?(Nokogiri::XML::Document) ? file : Nokogiri::XML(file)
-      xml = xml.to_hash
-
-      if xml[:nfeProc]
+    def initialize(attrs)
+      if attrs[:nfeProc]
         # Versao da NFe
-        @version_schema = xml[:nfeProc][:versao]
+        @version_schema = attrs[:nfeProc][:versao]
         # Assinatura
-        @signature = xml[:nfeProc][:NFe][:Signature]
+        @signature = attrs[:nfeProc][:NFe][:Signature]
 
-        # Protocolo
-        if xml[:nfeProc][:protNFe]
-          protocol = xml[:nfeProc][:protNFe][:infProt]
+        @protocol = Protocol.new(attrs[:nfeProc][:protNFe])
 
-          @enviroment = protocol[:tpAmb]
-          @version_app = protocol[:verAplic]
-          @key = protocol[:chNFe]
-          @date = protocol[:dhRecbto]
-          @protocol = protocol[:nProt]
-          @digest = protocol[:digVal]
-          @status = protocol[:cStat]
-          @description = protocol[:xMotivo]
-        end
-
-        xml = xml[:nfeProc][:NFe][:infNFe]
+        attrs = attrs[:nfeProc][:NFe][:infNFe]
       else
-        xml = xml[:NFe][:infNFe]
+        attrs = attrs[:NFe][:infNFe]
       end
 
       # Numero da Nfe
-      @number = xml[:Id]
+      @number = attrs[:Id]
       # Versao da NFe
-      @version = xml[:versao]
+      @version = attrs[:versao]
 
       # Identificação da Nota Fiscal eletrônica
-      @header = Header.new(xml[:ide])
+      @header = Header.new(attrs[:ide])
 
       # Identificação do Emitente da Nota Fiscal eletrônica
-      @provider = Provider.new(xml[:emit])
+      @provider = Provider.new(attrs[:emit])
 
       # Identificação do Fisco Emitente da NF-e
-      if xml[:avulsa]
-        @fiscal = Fiscal.new(xml[:avulsa])
+      if attrs[:avulsa]
+        @fiscal = Fiscal.new(attrs[:avulsa])
       end
 
       # Identificação do Destinatário da Nota Fiscal eletrônica
-      @customer = Customer.new(xml[:dest])
+      @customer = Customer.new(attrs[:dest])
 
       # Informacoes Adicional
-      if xml[:infAdic]
-        @information = Information.new(xml[:infAdic])
+      if attrs[:infAdic]
+        @information = Information.new(attrs[:infAdic])
       end
 
       # Detalhamento de Produtos e Serviços da NF-e
-      @products = create_resources(Product, xml[:det])
+      @products = create_resources(Product, attrs[:det])
 
       # Totalizadores
-      @total = Total.new(xml[:total])
+      @total = Total.new(attrs[:total])
 
       # Informacao de Pagamento
-      if xml[:cobr]
-        @billing = Billing.new(xml[:cobr])
+      if attrs[:cobr]
+        @billing = Billing.new(attrs[:cobr])
       end
 
       # Transporte
-      if xml[:transp]
-        @transport = Transport.new(xml[:transp])
+      if attrs[:transp]
+        @transport = Transport.new(attrs[:transp])
       end
 
       # Identificação do Local de Entrega
-      if xml[:retirada]
-        @removal = Removal.new(xml[:retirada])
+      if attrs[:retirada]
+        @removal = Removal.new(attrs[:retirada])
       end
 
       # Identificação do Local de Retirada
-      if xml[:entrega]
-        @delivery = Delivery.new(xml[:entrega])
+      if attrs[:entrega]
+        @delivery = Delivery.new(attrs[:entrega])
       end
 
       # Autorização para obter XML
-      @authorizations = create_resources(Authorization, xml[:autXML])
+      @authorizations = create_resources(Authorization, attrs[:autXML])
 
       # Informacoes de Comercio Exterior
-      if xml[:exporta]
-        @export = Export.new(xml[:exporta])
+      if attrs[:exporta]
+        @export = Export.new(attrs[:exporta])
       end
 
       # Informacoes de Compra
-      if xml[:compra]
-        @purchase = Purchase.new(xml[:compra])
+      if attrs[:compra]
+        @purchase = Purchase.new(attrs[:compra])
       end
 
       # Cana de Acucar
-      if xml[:cana]
-        @cane = Cane.new(xml[:cana])
+      if attrs[:cana]
+        @cane = Cane.new(attrs[:cana])
       end
 
     rescue => exception
       @error = exception
       @trace = exception.backtrace
-    ensure
-      file.close if file.respond_to? :close
+    end
+
+    def nfe?
+      true
+    end
+
+    def lot?
+      false
     end
 
     def error?

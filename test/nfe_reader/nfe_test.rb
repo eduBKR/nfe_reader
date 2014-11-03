@@ -1,7 +1,8 @@
 require File.expand_path("../../test_helper", __FILE__)
 
 describe NfeReader::Nfe do
-  let (:nfe) { NfeReader::Nfe.new(File.open(file)) }
+
+  let (:nfe) { NfeReader::Base.read(File.open(file)) }
 
   describe 'many products' do 
     let(:file) { File.open(File.expand_path("../../files/sample-nfe.xml", __FILE__))}
@@ -74,37 +75,10 @@ describe NfeReader::Nfe do
       nfe.removal.must_be_nil
     end
 
-    it '#enviroment' do
-      nfe.enviroment.must_equal '1'
-    end
-
-    it '#version_app' do
-      nfe.version_app.must_equal 'SVRS2000101120000'
-    end
-
-    it '#key' do
-      nfe.key.must_equal '12300384950081649000148500001000001310002342'
-    end
-
-    it '#date' do
-      nfe.date.must_equal '2000-01-01T12:00:00'
-    end
-
     it '#protocol' do
-      nfe.protocol.must_equal '100000481241129'
+      nfe.protocol.must_be_instance_of NfeReader::Protocol
     end
 
-    it '#digest' do
-      nfe.digest.must_equal 'aklOQ0184NjoeaqCIRT01927Crf='
-    end
-
-    it '#status' do
-      nfe.status.must_equal '100'
-    end
-
-    it '#description' do
-      nfe.description.must_equal 'Autorizado o uso da NF-e'
-    end
 
     it '#total' do
       nfe.total.must_be_instance_of NfeReader::Total
